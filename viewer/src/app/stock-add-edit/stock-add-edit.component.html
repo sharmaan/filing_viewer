@@ -1,0 +1,131 @@
+<div mat-dialog-title>
+  <h1>Finance Data Entry Form</h1>
+</div>
+
+<form [formGroup]="financeForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Trading Symbol</mat-label>
+        <input matInput type="text" placeholder="Ex. AAPL" formControlName="symbol">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Company Name</mat-label>
+        <input matInput placeholder="Ex. Babaji" formControlName="companyName">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Sector</mat-label>
+        <input matInput type="text" placeholder="Ex. Technology" formControlName="sector">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Industry</mat-label>
+        <mat-select formControlName="industry">
+          <mat-option *ngFor="let val of industry" [value]="val">{{val}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <input matInput type="text" placeholder="Ex. United States" formControlName="country">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Currency</mat-label>
+        <input matInput placeholder="Ex. USD" formControlName="currency">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>MarketCap</mat-label>
+        <input matInput placeholder="Ex. 1000000" type="number" formControlName="marketCap">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Shares Outstanding</mat-label>
+        <input matInput placeholder="Ex. 1000000" type="number" formControlName="sharesOutstanding">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Current Price</mat-label>
+        <input matInput type="text" placeholder="Ex. 100" type="number" formControlName="currentPrice">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Revenue</mat-label>
+        <input matInput type="text" placeholder="Ex. 100" type="number" formControlName="totalRevenue">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Enterprise Value</mat-label>
+        <input matInput type="text" placeholder="Ex. 100" type="number" formControlName="enterpriseValue">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Beta</mat-label>
+        <input matInput type="text" placeholder="Ex. 1.04" type="number" formControlName="beta">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Book Value</mat-label>
+        <input matInput type="text" placeholder="Ex. 8.9" type="number" formControlName="bookValue">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Price To Book</mat-label>
+        <input matInput type="text" placeholder="Ex. 7.8" type="number" formControlName="priceToBook">
+      </mat-form-field>
+    </div>
+
+    <!-- <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Ex. test@gmail.com" formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Date of birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-radio-group aria-label="Select an option" formControlName="gender">
+        <mat-label><b>Gender</b></mat-label>
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="others">Others</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Education</mat-label>
+        <mat-select formControlName="education">
+          <mat-option *ngFor="let val of education" [value]="val">{{val}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Company</mat-label>
+        <input matInput placeholder="Ex. Google" formControlName="company">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Experience</mat-label>
+        <input matInput placeholder="Ex. 4" type="number" formControlName="experience">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Package</mat-label>
+        <input matInput placeholder="Ex. 12" type="number" formControlName="package">
+        <mat-hint>In rupees</mat-hint>
+      </mat-form-field>
+    </div> -->
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+  </div>
+</form>

@@ -1,0 +1,89 @@
+<mat-toolbar color="primary">
+    <span>
+        <h1> XBRL Filing Viewer</h1>
+    </span>
+    <span class="example-spacer"></span>
+</mat-toolbar>
+
+<div class="mat-elevation-z8">
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+        aria-label="Select page of items">
+    </mat-paginator>
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+        class="mat-elevation-z8">
+
+
+        <ng-container matColumnDef="cikNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by CIK">
+                CIK
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.cikNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="companyName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Company Name">
+                Company Name
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="formType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by formType">
+                formType
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.formType}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="filingDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by filingDate">
+                filingDate
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.filingDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fiscalYearEnd">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by fiscalYearEnd">
+                fiscalYearEnd
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.fiscalYearEnd}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="period">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by period">
+                period
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.period}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acceptanceDatetime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by acceptanceDatetime">
+                acceptanceDatetime
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.acceptanceDatetime}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="accessionNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by accessionNumber">
+                accessionNumber
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.accessionNumber}} </td>
+        </ng-container>
+        <ng-container matColumnDef="fileNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by fileNumber">
+                fileNumber
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.fileNumber}} </td>
+        </ng-container>
+        <ng-container matColumnDef="link">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by link">
+                link
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.link}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+        aria-label="Select page of items">
+    </mat-paginator>
+</div>
