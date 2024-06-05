@@ -36,6 +36,8 @@ export class AppComponent implements OnInit {
     // "accessionNumber",
     "fileNumber",
     "accessionNumber",
+    "assignedSic",
+    "assistantDirector",
     // "link",
 
     // "action",

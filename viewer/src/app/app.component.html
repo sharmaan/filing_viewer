@@ -103,6 +103,14 @@
           </div>
         </td>
       </ng-container>
+      <ng-container matColumnDef="assignedSic">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> SIC </th>
+        <td mat-cell *matCellDef="let row"> {{row.assignedSic}}</td>
+      </ng-container>
+      <ng-container matColumnDef="assistantDirector">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Office </th>
+        <td mat-cell *matCellDef="let row"> {{row.assistantDirector}}</td>
+      </ng-container>
       <!-- <ng-container matColumnDef="link">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Filing (Click to view) </th>
         <td mat-cell *matCellDef="let row">
