@@ -13,32 +13,32 @@ import { VisualComponent } from "./visual/visual.component";
 import { BarComponent } from "./bar/bar.component";
 import { PieComponent } from "./pie/pie.component";
 import { FilingComponent } from "./filing/filing.component";
+import { ThemePalette } from "@angular/material/core";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
+  providers: [DatePipe],
 })
 export class AppComponent implements OnInit {
   title = "infs740_project_app";
 
   displayedColumns: string[] = [
-    "symbol",
+    "cikNumber",
     "companyName",
-    "sector",
-    "industry",
-    "country",
-    "currency",
-    "marketCap",
-    "sharesOutstanding",
-    "currentPrice",
-    "totalRevenue",
-    "enterpriseValue",
-    "beta",
-    "bookValue",
-    "priceToBook",
+    "formType",
+    "filingDate",
+    "fiscalYearEnd",
+    "period",
+    "acceptanceDatetime",
+    // "accessionNumber",
+    "fileNumber",
+    "accessionNumber",
+    // "link",
 
-    "action",
+    // "action",
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -48,7 +48,8 @@ export class AppComponent implements OnInit {
   constructor(
     private _dialog: MatDialog,
     private _stockService: StockService,
-    private _coreService: CoreService
+    private _coreService: CoreService,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -67,7 +68,7 @@ export class AppComponent implements OnInit {
   }
 
   getFinanceData() {
-    this._stockService.getFinanceDataList().subscribe({
+    this._stockService.getFilingData().subscribe({
       next: (res) => {
         // console.log(res);
         this.dataSource = new MatTableDataSource(res);
@@ -144,5 +145,17 @@ export class AppComponent implements OnInit {
   }
   displayFiling() {
     this._dialog.open(FilingComponent);
+  }
+
+  parseTimestampToDate(timestamp: string): Date {
+    timestamp = "20240604171853";
+    const year = parseInt(timestamp.slice(0, 4), 10);
+    const month = parseInt(timestamp.slice(4, 6), 10) - 1; // Months are zero-based in JavaScript
+    const day = parseInt(timestamp.slice(6, 8), 10);
+    const hours = parseInt(timestamp.slice(8, 10), 10);
+    const minutes = parseInt(timestamp.slice(10, 12), 10);
+    const seconds = parseInt(timestamp.slice(12, 14), 10);
+
+    return new Date(year, month, day, hours, minutes, seconds);
   }
 }
